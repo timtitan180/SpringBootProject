@@ -1,1 +1,1 @@
-<h1 style="color: green">Logged In!</h1>
+<h1 style="color: green">Hello ${name}</h1>

@@ -5,47 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-      body {
-        background-color:rgba(250, 250, 250, 0.356);
-      }
-
-      header {
-        margin-bottom:10px;
-      }
-      form {
-        margin-left:500px;
-        height:280px;
-        width:420px;
-        border-radius:2px solid black;
-      }
-      .stats-header {
-        margin-left:600px;
-      }
-
-      tr th {
-        background-color:rgba(250,250,250,0.5);
-        border-right:1px solid gainsboro;
-        border-bottom: 2px solid gray;
-      }
-
-      table {
-        outline: 1px solid gray;
-        margin-top:40px;
-        margin-left:500px;
-      }
-
-      .tableRows {
-        border-bottom:2px solid gray;
-      }
-      table tr {
-        border-bottom: 1px solid gray;
-      }
-      .delete-row {
-        display: inline;
-        margin-top:10px;
-      }
-    </style>
 </head>
 <body>
   <header>Header</header>
