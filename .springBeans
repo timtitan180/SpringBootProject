@@ -9,7 +9,6 @@
 	<configs>
 	</configs>
 	<autoconfigs>
-		<config>java:perscholas.SpringBootExampleApplication</config>
 	</autoconfigs>
 	<configSets>
 	</configSets>

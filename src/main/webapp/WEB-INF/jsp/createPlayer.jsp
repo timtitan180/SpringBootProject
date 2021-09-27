@@ -9,7 +9,7 @@
 <body>
   <header>Header</header>
     <div>
-        <form>
+        <form action="/createPlayer" method="post">
           <div>
             <input id="games" name="games" placeholder="Enter Games Played"/>
             <input id="atBats" name="atBats" placeholder="Enter At Bats" />

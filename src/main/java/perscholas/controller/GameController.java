@@ -5,11 +5,16 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
-@RequestMapping(value="/games")
 public class GameController {
-	@RequestMapping(value="gameTable",method=RequestMethod.GET)
+	@GetMapping(value="/createGame")
 	public ModelAndView getGamesTable() {
-		ModelAndView result = new ModelAndView("gamesTable");
+		ModelAndView result = new ModelAndView("createGames");
+		return result;
+	}
+	
+	@PostMapping(value="/createGame")
+	public ModelAndView postGamesTable() {
+		ModelAndView result = new ModelAndView("createGames");
 		return result;
 	}
 }
