@@ -13,6 +13,7 @@ public interface UserDao extends JpaRepository<User,Long> {
 
 	public User findByEmail(String email);
 	
-	List<User> findAll();
+	@Query(value="SELECT ur from UserRole ur WHERE ur.")
+	List<UserRoles> getUserRoles(Integer userIg);
 
 }

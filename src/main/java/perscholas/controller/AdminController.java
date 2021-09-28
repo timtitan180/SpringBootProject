@@ -5,12 +5,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-@RequestMapping("/login")
+@RequestMapping("/admin")
 @PreAuthorize("HasAuthoruty('ADMIN)")
 public class AdminController {
-	@GetMapping("/admin")
-	public ModelAndView getAdminPage() {
-		ModelAndView adminPage = new ModelAndView("adminpage");
-		return adminPage;
+	@RequestMapping("/protected")
+	public ModelAndView slash() {
+		ModelAndView response = new ModelAndView();
+		response.setViewName("admin/protected");
+		return response;
 	}
 }

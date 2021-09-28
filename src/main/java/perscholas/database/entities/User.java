@@ -1,10 +1,16 @@
 package perscholas.database.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
 public class User {
+	@Basic(fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+	private List<UserRole> userRoles = new ArrayList<UserRole>();
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -62,12 +68,10 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "User: [" + firstName + "" + lastName + "" + email + "" + password + "]";
 	}
-
-
 
 }
