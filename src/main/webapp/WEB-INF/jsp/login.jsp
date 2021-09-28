@@ -16,7 +16,7 @@
 </style>
 </head>
 <body>
-<form action="/login" method="post">
+<form action="/login/login" method="post">
 	<p>${error}</p>
 	<div>
 		<label>Enter Email</label>

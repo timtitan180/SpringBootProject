@@ -9,9 +9,10 @@ import java.util.List;
 import perscholas.database.entities.User;
 
 public interface UserDao extends JpaRepository<User,Long> {
-	public User findById(@Param("id") Integer Id);
+	public 	User findById(Integer id);
 
-	public User findByEmail(@Param("email") String Email);
+	public User findByEmail(String email);
 	
+	List<User> findAll();
 
 }

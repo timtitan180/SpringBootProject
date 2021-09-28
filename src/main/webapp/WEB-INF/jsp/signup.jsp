@@ -1,10 +1,10 @@
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 </head>
 <style>
-	* {
+* {
 	box-sizing: border-box;
 }
 
@@ -155,32 +155,40 @@ td {
 .button-container {
 	margin-top: 60px;
 }
-
 </style>
 <body>
-<header class="header"></header>
+	<header class="header"></header>
 	<c:forEach items="${errors}" var="error">
-		<p style="color:red">${error}</p>
+		<p style="color: red">${error}</p>
 	</c:forEach>
+	<div class="row">
+		<div class="col">
+			<input class="inputs" id="fname" autcomplete="off" autofill="off"
+				pattern="[A-Za-z]{1,25}" placeholder="Enter FirstName"></input> <input
+				class="inputs" autcomplete="off" autofill="off" id="lname"
+				pattern="[A-Za-z]{1,25}" placeholder="Enter Last Name"></input> <input
+				autocomplete="off" autofill="off" class="inputs" id="city"
+				pattern="[A-Za-z]{1,25}" placeholder="Enter City"></input>
+		</div>
+		<div class="col">
+			<input autocomplete="off" autofill="off" class="inputs" id="age"
+				pattern="[0-9][1,3]" placeholder="Enter Age"></input> <input
+				autcomplete="off" autofill="off" class="inputs" id="zipcode"
+				pattern="[0-9]{1,7}" placeholder="Zip Code"></input>
+		</div>
+	</div>
 	<form name="form" action="/createuser" method="post">
-	
-		<input name="firstName" placeholder="Enter First Name" />
-		
-		<input name="lastName" placeholder="Enter Last Name" />
-		
-		<input name="email" placeholder="Enter Email" /> 
-		
-		<input
-			name="password" placeholder="Enter password" /> 
-			
-		<input
-			name="confirmPassword" placeholder="ReEnter Password" /> 
-			
-		<select><option>Enter Role</option>
+
+		<input name="firstName" placeholder="Enter First Name" /> <input
+			name="lastName" placeholder="Enter Last Name" /> <input name="email"
+			placeholder="Enter Email" /> <input name="password"
+			placeholder="Enter password" /> <input name="confirmPassword"
+			placeholder="ReEnter Password" /> <select><option>Enter
+				Role</option>
 			<option>Coach</option>
 			<option>Player</option>
 		</select>
-		
+
 		<button type="submit">SUBMIT</button>
 	</form>
 </body>
