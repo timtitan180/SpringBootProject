@@ -42,6 +42,7 @@ public class Stats {
 	@Column(name = "times_struck_out")
 	private Integer timesStruckOut;
 
+	/* Stats for pitchers */
 	@Column(name = "innings_pitched")
 	private Integer inningsPitched;
 
