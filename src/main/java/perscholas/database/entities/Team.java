@@ -1,5 +1,10 @@
-package perscholas.database.entities;
-
-public class Team {
-
-}
+//package perscholas.database.entities;
+//
+//import javax.persistence.Entity;
+//import javax.persistence.Table;
+//
+//@Entity
+//@Table(name="teams")
+//public class Team {
+//
+//}

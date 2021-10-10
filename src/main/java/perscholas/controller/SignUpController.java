@@ -6,6 +6,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import perscholas.database.daos.ListofUsers;
 import perscholas.database.daos.UserDao;
 import perscholas.database.entities.User;
 import perscholas.forms.CreateUserForm;
@@ -23,61 +23,61 @@ import perscholas.forms.CreateUserForm;
 @Controller
 public class SignUpController {
 
-	@Autowired
-	UserDao userDao;
+@Autowired
+UserDao userDao;
 
+@Autowired
+PasswordEncoder passwordEncoder;
 
-	@GetMapping(value = "/createuser")
+	@GetMapping(value = "/signup")
 	public ModelAndView GetLoginUser() {
 		ModelAndView signupPage = new ModelAndView("signup");
-		signupPage.addObject("form",new CreateUserForm());
+		signupPage.addObject("form", new CreateUserForm());
 		return signupPage;
 
 	}
 
-	@PostMapping(value = "/createuser")
-	public ModelAndView PostLoginUser(@Valid CreateUserForm form,BindingResult bindingResult) {
-		
+	@PostMapping(value = "/signup")
+	public ModelAndView PostLoginUser(@Valid CreateUserForm form, BindingResult bindingResult) {
+
 		ModelAndView postSignupPage = new ModelAndView("signup");
 		postSignupPage.addObject("form", form);
 		List<String> errors = new ArrayList<String>();
-		
-		for(FieldError error:bindingResult.getFieldErrors()) {
+
+		for (FieldError error : bindingResult.getFieldErrors()) {
 			System.out.println("Error:" + "=" + error.getField());
 			errors.add(error.getDefaultMessage());
 		}
-		
+
 		postSignupPage.addObject("errors", errors);
-		
-		if(errors.size() > 0) {
+
+		if (errors.size() > 0) {
 			return postSignupPage;
 		}
-		
-		
+
 		// business logic
+		List<User> users = new ArrayList<User>();
 		User user = new User();
 		user.setFirstName(form.getFirstName());
 		user.setLastName(form.getLastName());
 		user.setEmail(form.getEmail());
 		user.setPassword(passwordEncoder.encode(form.getPassword()));
-		
-		System.out.println(form.toString());
-		  
-		userDao.save(user);
-		
+
+//		userDao.save(user);
+		users.add(user);
 
 		return postSignupPage;
 
 	}
-	
+
 }
 
-	// need to get fullname,email and password from the form in the login jsp
-	// I need to create a session and get the attributes of name email and password
-	// from the getters of the Users bean
+// need to get fullname,email and password from the form in the login jsp
+// I need to create a session and get the attributes of name email and password
+// from the getters of the Users bean
 //		request.getAttribute("name");
 //		request.getAttribute("password");
-	
+
 //	@RequestMapping(value = "/login", method = RequestMethod.GET)
 //	public ModelAndView getLogin(HttpServletRequest request, HttpServletResponse response) {
 //		ModelAndView result = new ModelAndView("login");
@@ -107,5 +107,3 @@ public class SignUpController {
 //		}
 //		return result;
 //	}
-
-}

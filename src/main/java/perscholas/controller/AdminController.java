@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @RequestMapping("/admin")
-@PreAuthorize("HasAuthoruty('ADMIN)")
+@PreAuthorize("HasAuthoruty('ADMIN')")
 public class AdminController {
 	@RequestMapping("/protected")
 	public ModelAndView slash() {

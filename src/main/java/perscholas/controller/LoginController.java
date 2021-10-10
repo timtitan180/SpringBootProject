@@ -1,6 +1,7 @@
 package perscholas.controller;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,17 +13,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import perscholas.database.daos.LoginDao;
+import org.springframework.stereotype.Controller;
+import perscholas.database.daos.UserDao;
 import perscholas.database.entities.User;
 import perscholas.forms.LoginForm;
 
-@org.springframework.stereotype.Controller
 
-@PreAuthorize("hasAuthority('ADMIN','ANOTHER')")
-@RequestMapping("/login")
+@PreAuthorize("hasAuthority('ADMIN','USER')")
+@Controller
 public class LoginController{
 	@Autowired
-	LoginDao loginDao;
+	UserDao userDao;
 	
 	@GetMapping(value="/login")
 	public ModelAndView getLoginPage() {
@@ -36,14 +37,13 @@ public class LoginController{
 		List<String> loginErrors = new ArrayList<String>();
 		User user = new User();
 		user.setPassword(form.getPassword());
-		if(!loginDao.exists(Example.of(user))) {
-			view.addObject("error", "User could not be found in our system. Check your username and password");
-			return view;
-		}
-		else {
-			view.setViewName("redirect:/adminDashboard");
-			return view;
-		}
+		return view;
+	}
+	
+	@GetMapping(value="/error")
+	public ModelAndView getErrorPage() {
+		ModelAndView errorPage = new ModelAndView("error");
+		return errorPage;
 	}
 	
 	@GetMapping(value="/logout") 

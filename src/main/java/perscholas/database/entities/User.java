@@ -2,16 +2,10 @@ package perscholas.database.entities;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.*;
-
 @Entity
 @Table(name = "users")
 public class User {
-	@Basic(fetch = FetchType.LAZY)
-	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-	private List<UserRole> userRoles = new ArrayList<UserRole>();
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
@@ -28,6 +22,9 @@ public class User {
 
 	@Column(name = "password", nullable = false)
 	private String password;
+
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+	private List<UserRole> userRoles = new ArrayList<UserRole>();
 
 	public Integer getId() {
 		return id;
