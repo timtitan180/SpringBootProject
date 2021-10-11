@@ -1,8 +1,10 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-</head>
+<title>Parcel Sandbox</title>
+<meta charset="UTF-8" />
+<link rel="stylesheet" shref="css/signupstyle.css" type="text/css" />
 <style>
 * {
 	box-sizing: border-box;
@@ -10,7 +12,7 @@
 
 body {
 	font-family: sans-serif;
-	background-color: rgb(11, 186, 239);
+	background-color: rgba(10, 10, 10, 0.1);
 }
 
 .errors {
@@ -61,10 +63,15 @@ a:hover {
     width:%;
   } */
 .header {
+	background-color: white;
 	width: 100%;
-	height: 10px;
+	height: 80px;
+	padding-top: 20px;
+	padding-right: 500px;
+	padding-left: 270px;
 	overflow: hidden;
-	margin-bottom: 20px;
+	margin-bottom: 5px;
+	box-shadow: 0 10px 6px -8px gray;
 }
 
 .links {
@@ -73,14 +80,15 @@ a:hover {
 }
 
 form {
-	background-color: rgb(11, 206, 240);
-	height: 380px;
-	width: 400px;
-	margin-top: 10%;
-	margin-left: 600px;
-	border: 1px solid white;
+	background-color: rgba(250, 250, 250);
+	height: 430px;
+	width: 310px;
+	margin-top: 5%;
+	margin-left: 250px;
+	border: 1px solid gray;
 	border-radius: 5px;
-	border: 1px solid rgba(252, 252, 252, 0.4);
+	border: 1px solid rgba(252, 252, 252, 0.9);
+	box-shadow: 0 1px 4px 1px gray;
 }
 
 p {
@@ -96,16 +104,18 @@ h3 {
 	text-align: center;
 }
 
-input {
-	border: 1px solid rgba(252, 252, 252, 0.4);
-	background-color: rgba(252, 252, 252, 0.2);
+.inputs {
+	margin-left: 80px;
+	display: block;
+	border: 1px solid rgba(252, 252, 252, 0.7);
+	background-color: rgba(0, 0, 0, 0.1);
 	padding-top: 7px;
-	width: 101px;
-	border-radius: 2px;
+	height: 35px;
+	width: 150px;
+	border-radius: 3px;
 	font-family: "Source Sans Pro", sans-serif;
 	color: white;
-	margin-right: 10px;
-	margin-top: 15px;
+	margin-top: 25px;
 	margin-bottom: 8px;
 }
 
@@ -120,6 +130,7 @@ select option::after {
 }
 
 button {
+	margin-right: 130px;
 	margin-top: 10px;
 	border: none;
 	background-color: rgba(250, 250, 250, 0.4);
@@ -144,6 +155,13 @@ header {
 	border-bottom: 1px solid rgba(250, 250, 250, 0.4);
 }
 
+header img {
+	position: absolute;
+	float: left;
+	height: 40px;
+	width: 40px;
+}
+
 select {
 	padding-top: 7px;
 }
@@ -155,30 +173,54 @@ td {
 .button-container {
 	margin-top: 60px;
 }
+
+.register-header {
+	margin-top: 40px;
+	margin-left: 300px;
+	justify-content: center;
+	text-align: center;
+	align-items: center;
+	color: white;
+	height: 40px;
+	width: 200px;
+	background-color: cadetblue;
+	border-radius: 10px;
+}
+
+.register-header img {
+	margin-left: 2px;
+}
 </style>
+</head>
 <body>
-	<header class="header"></header>
+	<header class="header">
+		<img
+			src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWY-JYi8Qr36TQO_hwe_2LXfPx8TJNxguzrQ&usqp=CAU"
+			alt="baseball-image" />
+		<h4>GRAND SLAM</h4>
+	</header>
 	<c:forEach items="${errors}" var="error">
 		<p style="color: red">${error}</p>
 	</c:forEach>
-	<form name="form" action="/createuser" method="post">
-	<div class="row">
-	<div class="col">
-		<input name="firstName" placeholder="Enter First Name" /> <input
-			name="lastName" placeholder="Enter Last Name" /> <input name="email"
-			placeholder="Enter Email" /> <input name="password"
-			placeholder="Enter password" />
-			</div> 
-			<div class="col">
-			<input name="confirmPassword"
-			placeholder="ReEnter Password" /> <select><option>Enter
-				Role</option>
-			<option>Coach</option>
-			<option>Player</option>
-		</select>
-		</div>
+	<div class="register-header">
+		<h3>REGISTER</h3>
 	</div>
-		<button type="submit">SUBMIT</button>
+	<form method="POST">
+		<input class="inputs" id="fname" autcomplete="off" autofill="off" placeholder="Enter First Name"></input> <input
+			class="inputs" autcomplete="off" autofill="off" id="lname"
+			placeholder="Enter Last Name"></input> <input
+			autocomplete="off" autofill="off" class="inputs" id="city" placeholder="Enter Email"></input> <input
+			autocomplete="off" autofill="off" class="inputs" id="age"
+		    placeholder="Enter Password"></input> <input
+			autcomplete="off" autofill="off" class="inputs" id="zipcode"
+			placeholder="Confirm Password"></input> <select
+			class="inputs" id="select">
+			<option>Enter Role</option>
+			<option value="COACH">COACH</option>
+			<option value="PLAYER">PLAYER</option>
+		</select>
+		<button type="submit" id="button"
+			style="color: white; background-color: lime; height: 30px; width: 60px; border-radius: 1px; margin-top: 25px; margin-left: 45%; margin-bottom: 170px; position: relative;">Submit</button>
 	</form>
 </body>
 </html>

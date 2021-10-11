@@ -20,12 +20,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled=true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter { 
-//	@Autowired
-//	AuthenticationSuccessHandlerImpl successHandler;
-//	 
-//	@Autowired
-//	AuthenticationFailureHandlerImpl failureHandler;
-	
+	/*
+	 * // @Autowired // AuthenticationSuccessHandlerImpl successHandler; //
+	 * // @Autowired // AuthenticationFailureHandlerImpl failureHandler;
+	 */
 	@Autowired
 	UserDetailsServiceImpl userDetailsService;
 	
